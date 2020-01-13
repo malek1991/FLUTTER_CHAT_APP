@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "164258851451",
+    "firebase_url": "https://fir-messaging-demo-a53c5.firebaseio.com",
+    "project_id": "fir-messaging-demo-a53c5",
+    "storage_bucket": "fir-messaging-demo-a53c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164258851451:android:77f50d541c2b2c50ff10de",
+        "android_client_info": {
+          "package_name": "com.example.flutter_chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164258851451-a9ptbebud42q07ssmn26os70gh1938to.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM5L_t9ShFCB8fphYKtrztFw7CXI-R6Lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164258851451-a9ptbebud42q07ssmn26os70gh1938to.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
