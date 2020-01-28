@@ -4,10 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_chat_app/pages/home_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class RegistrationPage extends StatefulWidget {
   final SharedPreferences prefs;
+
   RegistrationPage({this.prefs});
+
   @override
   _RegistrationPageState createState() => _RegistrationPageState();
 }
@@ -32,14 +35,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
     };
     try {
       await _auth.verifyPhoneNumber(
-          phoneNumber: this.phoneNo, // PHONE NUMBER TO SEND OTP
+          phoneNumber: this.phoneNo,
+          // PHONE NUMBER TO SEND OTP
           codeAutoRetrievalTimeout: (String verId) {
             //Starts the phone number verification process for the given phone number.
             //Either sends an SMS with a 6 digit code to the phone number specified, or sign's the user in and [verificationCompleted] is called.
             this.verificationId = verId;
           },
-          codeSent:
-              smsOTPSent, // WHEN CODE SENT THEN WE OPEN DIALOG TO ENTER OTP.
+          codeSent: smsOTPSent,
+          // WHEN CODE SENT THEN WE OPEN DIALOG TO ENTER OTP.
           timeout: const Duration(seconds: 20),
           verificationCompleted: (AuthCredential phoneAuthCredential) {
             print(phoneAuthCredential);
@@ -92,6 +96,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   signIn() async {
     try {
+      WidgetsFlutterBinding.ensureInitialized();
+//      FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
       final AuthCredential credential = PhoneAuthProvider.getCredential(
         verificationId: verificationId,
         smsCode: smsOTP,
@@ -109,7 +115,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
             await db.collection("users").add({
               'name': "No Name",
               'mobile': phoneNo.replaceAll(new RegExp(r'[^\w\s]+'), ''),
-              'profile_photo': "",
+              'profile_photo': ""
             }).then((documentReference) {
               widget.prefs.setBool('is_verified', true);
               widget.prefs.setString(
@@ -149,6 +155,20 @@ class _RegistrationPageState extends State<RegistrationPage> {
           );
         }
       }).catchError((e) {});
+      // Update The token of the mobile
+//      String sToken;
+//      _firebaseMessaging.getToken().then((token) {
+//        sToken = token;
+//      });
+//      Firestore.instance.collection('mobiles').document(phoneNo.replaceAll(new RegExp(r'[^\w\s]+'), '')).updateData({
+//        'token': sToken
+//      }).then((data) async {
+//        /**
+//         * toDo
+//         */
+//      }).catchError((e) {
+//        print(e);
+//      });
     } catch (e) {
       handleError(e);
     }

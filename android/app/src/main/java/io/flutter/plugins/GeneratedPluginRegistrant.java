@@ -5,6 +5,7 @@ import io.flutter.plugins.firebase.cloudfirestore.CloudFirestorePlugin;
 import net.goderbauer.flutter.contactpicker.ContactPickerPlugin;
 import io.flutter.plugins.firebaseauth.FirebaseAuthPlugin;
 import io.flutter.plugins.firebase.core.FirebaseCorePlugin;
+import io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin;
 import io.flutter.plugins.firebase.storage.FirebaseStoragePlugin;
 import io.flutter.plugins.imagepicker.ImagePickerPlugin;
 import io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin;
@@ -21,6 +22,7 @@ public final class GeneratedPluginRegistrant {
     ContactPickerPlugin.registerWith(registry.registrarFor("net.goderbauer.flutter.contactpicker.ContactPickerPlugin"));
     FirebaseAuthPlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebaseauth.FirebaseAuthPlugin"));
     FirebaseCorePlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebase.core.FirebaseCorePlugin"));
+    FirebaseMessagingPlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin"));
     FirebaseStoragePlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebase.storage.FirebaseStoragePlugin"));
     ImagePickerPlugin.registerWith(registry.registrarFor("io.flutter.plugins.imagepicker.ImagePickerPlugin"));
     SharedPreferencesPlugin.registerWith(registry.registrarFor("io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin"));
